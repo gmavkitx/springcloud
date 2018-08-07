@@ -1,0 +1,56 @@
+#服务端口
+server:
+  port: 7004
+
+#Spring配置
+spring:
+  profiles:
+    active: default
+  application:
+    name: server-config
+  #设置安全认证，Finchley版本新加了spring前缀
+  security:
+    user:
+      name: kingboy
+      password: 123456
+  cloud:
+    #Config Server配置
+    config:
+      server:
+        git:
+          uri: https://github.com/KingBoyWorld/cloud-config.git
+          #username: username
+          #password: password
+          #搜索的路径，这里以项目名进行搜索=====记得加上单引号
+          search-paths: '{application}'
+          #标签-分支
+          default-label: master
+          #仓库的缓存位置，Linux默认放在临时目录，可能会被系统进程删除，导致报错
+          basedir: ${user.home}/git
+          #超时时间
+          timeout: 5
+          #强制更新，防止本地git缓存被修改
+          force-pull: true
+          #启动时克隆仓库
+          #clone-on-start: true
+          #将远程已经删除的分支从本地也删除
+          deleteUntrackedBranches: true
+
+#eureka配置
+eureka:
+  username: kingboy
+  password: 123456
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.username}:${eureka.password}@localhost:7000/eureka/
+    #定时刷新本地缓存时间
+    registry-fetch-interval-seconds: 5
+  instance:
+    #使用IP进行注册
+    prefer-ip-address: true
+    #配置实例的注册ID
+    instance-id: ${spring.cloud.client.hostname}:${server.port}
+    #心跳时间，即服务续约间隔时间（缺省为30s）
+    lease-renewal-interval-in-seconds: 5
+    #发呆时间，即服务续约到期时间（缺省为90s）
+    lease-expiration-duration-in-seconds: 10

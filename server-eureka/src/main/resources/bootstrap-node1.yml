@@ -1,0 +1,18 @@
+# 注意：启用集群时，需要配置hostname: 127.0.0.1	localhost node1 node2 node3
+
+#服务端口
+server:
+  port: 7001
+
+#eureka配置
+eureka:
+  instance:
+    hostname: node1
+  client:
+    #不获取注册中心的信息
+    fetch-registry: true
+    #不向eureka注册
+    register-with-eureka: true
+    #客户端注册的url
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@node2:7002/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@node3:7003/eureka/

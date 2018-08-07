@@ -1,0 +1,69 @@
+
+### 新增用户
+POST http://localhost:8001/user
+Content-Type: application/json
+
+{
+  "age": 18,
+  "balance": 9999,
+  "birth": "1992-08-05T12:12:12.888Z",
+  "gender": "MAN",
+  "name": "KingBoy"
+}
+
+### 新增用户 - 错误示例
+POST http://localhost:8001/user
+Content-Type: application/json
+
+{
+  "age": 18,
+  "balance": 9999,
+  "birth": "2222-08-05T12:12:12.888Z",
+  "gender": "MAN",
+  "name": "KingBoyKing"
+}
+
+### 更新用户
+
+PUT http://localhost:8001/user
+Content-Type: application/json
+
+{
+  "id": "1026202408381870081",
+  "age": 19,
+  "balance": 99999,
+  "version": 0
+}
+
+### 删除用户-软删除
+
+DELETE http://localhost:8001/user/1026202408381870081
+
+### 根据ID查询用户
+
+GET http://localhost:8001/user/1026202408381870081
+
+### 分布查询用户
+
+GET http://localhost:8001/user?current=2&size=2
+
+### 分布查询用户-XML
+
+GET http://localhost:8001/user/xml?current=2&size=2
+
+### 分布查询用户-Annotation
+
+GET http://localhost:8001/user/annotation?current=2&size=2
+
+### 条件查询-Wrapper
+
+POST http://localhost:8001/user/wrapper?current=1&size=5
+Content-Type: application/json
+
+{
+  "name": "u",
+  "gender": "女",
+  "age": 10
+}
+
+###

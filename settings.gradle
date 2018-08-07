@@ -1,0 +1,7 @@
+rootProject.name = 'cloud-king'
+
+include(":common")
+include(":server-config")
+include(":server-eureka")
+include(":service-provider")
+
