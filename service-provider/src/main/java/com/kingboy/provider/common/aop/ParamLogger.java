@@ -84,7 +84,7 @@ public class ParamLogger {
         info.put("method", point.getSignature().getName());
 
         String[] parameterNames = ((MethodSignature) point.getSignature()).getParameterNames();
-        ConcurrentHashMap<String, String> args= null;
+        ConcurrentHashMap<String, String> args = null;
 
         if (Objects.nonNull(parameterNames)) {
             args = new ConcurrentHashMap<>();

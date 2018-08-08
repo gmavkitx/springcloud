@@ -52,8 +52,9 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     public ${entity}VO save(${entity}DTO ${entityName}DTO) {
         ${entity} ${entityName} = MapperUtils.mapperBean(${entityName}DTO, ${entity}.class);
         boolean success = this.save(${entityName});
-        if (!success) throw exceptionManager.create("资源创建失败!");
-
+        if (!success) {
+            throw exceptionManager.create("资源创建失败!");
+        }
         return MapperUtils.mapperBean(${entityName}, ${entity}VO.class);
     }
 
@@ -66,12 +67,14 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      */
     @Override
     public ${entity}VO update(${entity}DTO ${entityName}DTO) {
-        if (${entityName}DTO.getId() == null) throw exceptionManager.create("您所更新的资源ID不存在!");
-
+        if (${entityName}DTO.getId() == null) {
+            throw exceptionManager.create("您所更新的资源ID不存在!");
+        }
         ${entity} ${entityName} = MapperUtils.mapperBean(${entityName}DTO, ${entity}.class);
         boolean success = this.updateById(${entityName});
-        if (!success) throw exceptionManager.create("资源更新失败!");
-
+        if (!success) {
+            throw exceptionManager.create("资源更新失败!");
+        }
         return MapperUtils.mapperBean(${entityName}, ${entity}VO.class);
     }
 
@@ -87,7 +90,9 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     @Override
     public void remove(Long id) {
         boolean success = this.removeById(id);
-        if (!success) throw exceptionManager.create("资源删除失败!");
+        if (!success) {
+            throw exceptionManager.create("资源删除失败!");
+        }
     }
 
     /**
@@ -99,8 +104,9 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      */
     public ${entity}VO get(Long id) {
         ${entity} ${entityName} = this.getById(id);
-        if (${entityName} == null) throw exceptionManager.create("您所查询的资源不存在!");
-
+        if (${entityName} == null) {
+            throw exceptionManager.create("您所查询的资源不存在!");
+        }
         ${entity}VO ${entityName}VO = MapperUtils.mapperBean(${entityName}, ${entity}VO.class);
         return ${entityName}VO;
     }

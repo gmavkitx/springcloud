@@ -48,7 +48,7 @@ public class ApiException extends RuntimeException {
     private ErrorMessage[] messages;
 
     public String toJsonString() {
-        SimplePropertyPreFilter filter= new SimplePropertyPreFilter(ApiException.class,"id","appName","serverIp","messages");
+        SimplePropertyPreFilter filter = new SimplePropertyPreFilter(ApiException.class, "id", "appName", "serverIp", "messages");
         return JSONObject.toJSONString(this, filter);
     }
 

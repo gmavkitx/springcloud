@@ -2,6 +2,7 @@ package com.kingboy.provider.common.utils.page;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.kingboy.common.utils.mapper.MapperUtils;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @author KingBoy - KingBoyWorld@163.com
  * @since 2018-08-07 02:02
  */
+@Slf4j
 public class PageConverter {
 
     /**
@@ -25,7 +27,10 @@ public class PageConverter {
      * @since 2018/8/7 03:14
      */
     public static void convert(IPage page, Class clazz) {
-        if (page.getRecords() == null) return;
+        if (page.getRecords() == null) {
+            log.warn("分页结果数据为空");
+            return;
+        }
         List convertData = MapperUtils.mapperList(page.getRecords(), clazz);
         page.setRecords(convertData);
     }
@@ -41,7 +46,10 @@ public class PageConverter {
      * @since 2018/8/7 03:16
      */
     public static void convert(IPage page, Class clazz, Map<String, String> diffFieldMap) {
-        if (page.getRecords() == null) return;
+        if (page.getRecords() == null) {
+            log.warn("分页结果数据为空");
+            return;
+        }
         List convertData = MapperUtils.mapperList(page.getRecords(), clazz, diffFieldMap);
         page.setRecords(convertData);
     }

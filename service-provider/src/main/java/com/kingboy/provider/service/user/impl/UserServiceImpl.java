@@ -42,8 +42,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public UserVO save(UserDTO userDTO) {
         User user = MapperUtils.mapperBean(userDTO, User.class);
         boolean success = this.save(user);
-        if (!success) throw exceptionManager.create("资源创建失败!");
-
+        if (!success) {
+            throw exceptionManager.create("资源创建失败!");
+        }
         return MapperUtils.mapperBean(user, UserVO.class);
     }
 
@@ -56,12 +57,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      */
     @Override
     public UserVO update(UserDTO userDTO) {
-        if (userDTO.getId() == null) throw exceptionManager.create("您所更新的资源ID不存在!");
-
+        if (userDTO.getId() == null) {
+            throw exceptionManager.create("您所更新的资源ID不存在!");
+        }
         User user = MapperUtils.mapperBean(userDTO, User.class);
         boolean success = this.updateById(user);
-        if (!success) throw exceptionManager.create("资源更新失败!");
-
+        if (!success) {
+            throw exceptionManager.create("资源更新失败!");
+        }
         return MapperUtils.mapperBean(user, UserVO.class);
     }
 
@@ -77,7 +80,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public void remove(Long id) {
         boolean success = this.removeById(id);
-        if (!success) throw exceptionManager.create("资源删除失败!");
+        if (!success) {
+            throw exceptionManager.create("资源删除失败!");
+        }
     }
 
     /**
@@ -89,8 +94,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      */
     public UserVO get(Long id) {
         User user = this.getById(id);
-        if (user == null) throw exceptionManager.create("您所查询的资源不存在!");
-
+        if (user == null) {
+            throw exceptionManager.create("您所查询的资源不存在!");
+        }
         UserVO userVO = MapperUtils.mapperBean(user, UserVO.class);
         return userVO;
     }

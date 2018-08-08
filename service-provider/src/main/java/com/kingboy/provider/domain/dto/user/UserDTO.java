@@ -1,12 +1,7 @@
 package com.kingboy.provider.domain.dto.user;
 
 import java.math.BigDecimal;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.Version;
 import java.time.LocalDateTime;
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kingboy.provider.common.utils.validate.PastDate;
@@ -28,7 +23,7 @@ import org.hibernate.validator.constraints.Range;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel(value="UserDTO对象", description="用户信息")
+@ApiModel(value = "UserDTO对象", description = "用户信息")
 public class UserDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;

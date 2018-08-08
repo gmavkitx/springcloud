@@ -6,12 +6,18 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
 /**
- * 获取示例
- * /{application}/{profile}[/{label}]
- * /{application}-{profile}.yml
- * /{label}/{application}-{profile}.yml
- * /{application}-{profile}.properties
- * /{label}/{application}-{profile}.properties
+ * 配置中心.
+ * <p>
+ *     配置获取url示例:
+ *     /{application}/{profile}[/{label}]
+ *     /{application}-{profile}.yml
+ *     /{label}/{application}-{profile}.yml
+ *     /{application}-{profile}.properties
+ *     /{label}/{application}-{profile}.properties
+ * </p>
+ *
+ * @author KingBoy - KingBoyWorld@163.com
+ * @since 2018-08-07 02:02
  */
 @EnableConfigServer
 @EnableDiscoveryClient
