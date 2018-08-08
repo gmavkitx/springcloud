@@ -1,4 +1,4 @@
-rootProject.name = 'cloud-king'
+rootProject.name = 'springcloud'
 
 include(":common")
 include(":server-config")

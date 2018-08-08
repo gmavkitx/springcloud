@@ -18,7 +18,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/KingBoyWorld/spring-cloud-conf.git
+          uri: https://github.com/KingBoyWorld/springcloud-conf.git
           #username: username
           #password: password
           #搜索的路径，这里以项目名进行搜索=====记得加上单引号
