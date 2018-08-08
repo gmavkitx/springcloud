@@ -5,7 +5,7 @@ server:
 #Spring配置
 spring:
   profiles:
-    active: default
+    active: native
   application:
     name: server-config
   #设置安全认证，Finchley版本新加了spring前缀
@@ -17,24 +17,30 @@ spring:
     #Config Server配置
     config:
       server:
-        git:
-          uri: https://github.com/KingBoyWorld/springcloud-conf.git
-          #username: username
-          #password: password
-          #搜索的路径，这里以项目名进行搜索=====记得加上单引号
-          search-paths: '{application}'
-          #标签-分支
-          default-label: master
-          #仓库的缓存位置，Linux默认放在临时目录，可能会被系统进程删除，导致报错
-          basedir: ${user.home}/git
-          #超时时间
-          timeout: 5
-          #强制更新，防止本地git缓存被修改
-          force-pull: true
-          #启动时克隆仓库
-          #clone-on-start: true
-          #将远程已经删除的分支从本地也删除
-          deleteUntrackedBranches: true
+        #FIXME 为了更方便测试项目,这里使用本地文件进行配置
+        #FIXME 如果使用git仓库,只需要将resources目录下的文件夹拷贝到相应的git仓库,修改git仓库地址,将spring.profiles.active更改为default即可.
+        #使用本地文件的配置方式
+        native:
+          search-locations: classpath:/config/{application}
+        #使用Git仓库的配置方式
+#        git:
+#          uri: https://github.com/KingBoyWorld/springcloud-conf.git
+#          #username: username
+#          #password: password
+#          #搜索的路径，这里以项目名进行搜索=====记得加上单引号
+#          search-paths: '{application}'
+#          #标签-分支
+#          default-label: master
+#          #仓库的缓存位置，Linux默认放在临时目录，可能会被系统进程删除，导致报错
+#          basedir: ${user.home}/git
+#          #超时时间
+#          timeout: 5
+#          #强制更新，防止本地git缓存被修改
+#          force-pull: true
+#          #启动时克隆仓库
+#          #clone-on-start: true
+#          #将远程已经删除的分支从本地也删除
+#          deleteUntrackedBranches: true
 
 #eureka配置
 eureka:
