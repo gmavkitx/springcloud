@@ -11,9 +11,6 @@ import lombok.*;
  * @author KingBoy - KingBoyWorld@163.com
  * @since 2018-08-07 02:02
  */
-@Setter
-@Getter
-@NoArgsConstructor
 public class ApiException extends RuntimeException {
 
     public ApiException(ErrorMessage... errorMessages) {
@@ -46,6 +43,30 @@ public class ApiException extends RuntimeException {
      * 错误信息体
      */
     private ErrorMessage[] messages;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getAppName() {
+        return appName;
+    }
+
+    public void setAppName(String appName) {
+        this.appName = appName;
+    }
+
+    public String getServerIp() {
+        return serverIp;
+    }
+
+    public void setServerIp(String serverIp) {
+        this.serverIp = serverIp;
+    }
 
     public String toJsonString() {
         SimplePropertyPreFilter filter = new SimplePropertyPreFilter(ApiException.class, "id", "appName", "serverIp", "messages");

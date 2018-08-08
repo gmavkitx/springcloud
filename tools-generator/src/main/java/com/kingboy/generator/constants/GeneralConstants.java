@@ -1,8 +1,5 @@
 package com.kingboy.generator.constants;
 
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * 配置定义.
  * <p></p>
@@ -25,9 +22,9 @@ public class GeneralConstants {
     public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm";
 
     /**
-     * 要逆向生成的表,支持多个表的生成
+     * 要逆向生成的表,支持多个表的生成.多个表以英文逗号间隔
      */
-    public static final List<String> TABLES = Arrays.asList("user");
+    public static final String TABLES = "user";
 
     /**
      * 作者信息

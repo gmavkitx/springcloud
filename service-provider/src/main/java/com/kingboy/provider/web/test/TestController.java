@@ -25,7 +25,9 @@ public class TestController {
     @ApiOperation(value = "抛出系统异常", tags = "异常")
     @GetMapping(value = "/system")
     public void testSystemException() {
-        int a = 1 / 0;
+        if (true) {
+            throw new RuntimeException("系统异常");
+        }
     }
 
     @ApiOperation(value = "抛出自定义异常", tags = "异常")

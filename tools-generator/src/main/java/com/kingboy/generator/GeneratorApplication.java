@@ -41,7 +41,9 @@ public class GeneratorApplication {
      * @since 2018/8/7 00:45
      */
     public static void main(String[] args) {
-        TABLES.forEach(table -> GeneratorApplication.createByOneTable(table));
+        Arrays.stream(TABLES.split(","))
+                .filter(table -> table != null)
+                .forEach(table -> GeneratorApplication.createByOneTable(table));
     }
 
     /**
