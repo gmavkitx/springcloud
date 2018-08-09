@@ -4,23 +4,23 @@ POST http://localhost:8001/user
 Content-Type: application/json
 
 {
+  "name": "KingBoy",
   "age": 18,
   "balance": 9999,
-  "birth": "1992-08-05T12:12:12.888Z",
-  "gender": "MAN",
-  "name": "KingBoy"
+  "birth": "1992-08-05 12:12",
+  "gender": "MAN"
 }
 
-### 新增用户 - 错误示例
+### 新增用户 - 错误示例-出生时间错误
 POST http://localhost:8001/user
 Content-Type: application/json
 
 {
+  "name": "KingBoyKing",
   "age": 18,
   "balance": 9999,
-  "birth": "2222-08-05T12:12:12.888Z",
-  "gender": "MAN",
-  "name": "KingBoyKing"
+  "birth": "2222-08-05 12:12",
+  "gender": "MAN"
 }
 
 ### 更新用户
@@ -29,40 +29,47 @@ PUT http://localhost:8001/user
 Content-Type: application/json
 
 {
-  "id": "1026202408381870081",
+  "id": "1",
+  "name": "update",
   "age": 19,
   "balance": 99999,
+  "birth": "2000-08-05 12:12",
   "version": 0
 }
 
 ### 删除用户-软删除
 
-DELETE http://localhost:8001/user/1026202408381870081
+DELETE http://localhost:8001/user/1
 
 ### 根据ID查询用户
 
-GET http://localhost:8001/user/1026202408381870081
+GET http://localhost:8001/user/2
 
-### 分布查询用户
+### 根据条件分查询用户
 
-GET http://localhost:8001/user?current=2&size=2
+POST http://localhost:8001/user/list?current=1&size=4
+Content-Type: application/json
 
-### 分布查询用户-XML
+{
+  "age": 4
+}
 
-GET http://localhost:8001/user/xml?current=2&size=2
+### 分页查询用户-XML
 
-### 分布查询用户-Annotation
+GET http://localhost:8001/user/xml?current=1&size=2
+
+### 分页查询用户-Annotation
 
 GET http://localhost:8001/user/annotation?current=2&size=2
 
-### 条件查询-Wrapper
+### 条件查询-Wrapper,/*小于十岁*/
 
 POST http://localhost:8001/user/wrapper?current=1&size=5
 Content-Type: application/json
 
 {
   "name": "u",
-  "gender": "女",
+  "gender": "WOMAN",
   "age": 10
 }
 

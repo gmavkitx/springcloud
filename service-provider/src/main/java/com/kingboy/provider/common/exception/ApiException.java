@@ -4,6 +4,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.*;
 import lombok.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * 自定义异常.
  * <p></p>
@@ -14,14 +17,14 @@ import lombok.*;
 public class ApiException extends RuntimeException {
 
     public ApiException(ErrorMessage... errorMessages) {
-        this.messages = errorMessages;
+        this.messages = Arrays.asList(errorMessages);
     }
 
     public ApiException(String id, String appName, String serverIp, ErrorMessage... errorMessages) {
         this.id = id;
         this.appName = appName;
         this.serverIp = serverIp;
-        this.messages = errorMessages;
+        this.messages = Arrays.asList(errorMessages);
     }
 
     /**
@@ -42,7 +45,7 @@ public class ApiException extends RuntimeException {
     /**
      * 错误信息体
      */
-    private ErrorMessage[] messages;
+    private List<ErrorMessage> messages;
 
     public String getId() {
         return id;
@@ -66,6 +69,14 @@ public class ApiException extends RuntimeException {
 
     public void setServerIp(String serverIp) {
         this.serverIp = serverIp;
+    }
+
+    public void setMessages(List<ErrorMessage> messages) {
+        this.messages = messages;
+    }
+
+    public List<ErrorMessage> getMessages() {
+        return messages;
     }
 
     public String toJsonString() {
