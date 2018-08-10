@@ -2,7 +2,6 @@ package com.kingboy.provider.domain.vo.user;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +17,7 @@ import lombok.AllArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserVO implements Serializable {
+public class UserVO {
 
     private static final long serialVersionUID = 1L;
 
@@ -52,43 +51,6 @@ public class UserVO implements Serializable {
      * 性别
      */
     private String gender;
-
-    /**
-     * 账户状态
-     */
-    private Boolean locked;
-
-    /**
-     * 锁版本
-     */
-    private Integer version;
-
-    /**
-     * 逻辑删除
-     */
-    private Integer deleteFlag;
-
-    /**
-     * 创建人
-     */
-    private String createBy;
-
-    /**
-     * 创建时间
-     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime createTime;
-
-    /**
-     * 操作人
-     */
-    private String updateBy;
-
-    /**
-     * 更新时间
-     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime updateTime;
 
 
 }

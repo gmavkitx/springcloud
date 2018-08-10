@@ -1,4 +1,4 @@
-package com.kingboy.provider.common.exception;
+package com.kingboy.provider.common.utils.exception;
 
 import com.kingboy.common.utils.json.JsonUtils;
 import feign.Response;

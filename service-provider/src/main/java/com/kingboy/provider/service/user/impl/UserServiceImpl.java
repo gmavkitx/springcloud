@@ -1,19 +1,17 @@
 package com.kingboy.provider.service.user.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.kingboy.common.utils.page.Page;
 import com.kingboy.provider.domain.po.user.User;
 import com.kingboy.provider.mapper.user.UserMapper;
 import com.kingboy.provider.service.user.UserService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import com.kingboy.common.utils.mapper.MapperUtils;
 import com.kingboy.provider.domain.dto.user.UserDTO;
 import com.kingboy.provider.domain.vo.user.UserVO;
-import com.kingboy.provider.common.exception.ExceptionManager;
-import com.kingboy.provider.common.utils.page.PageConverter;
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.kingboy.provider.common.utils.exception.ExceptionManager;
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * User接口实现.
@@ -23,7 +21,7 @@ import javax.annotation.Resource;
  * @since 2018-08-07 02:02
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+public class UserServiceImpl implements UserService {
 
     @Resource
     ExceptionManager exceptionManager;
@@ -41,10 +39,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public UserVO save(UserDTO userDTO) {
         User user = MapperUtils.mapperBean(userDTO, User.class);
-        boolean success = this.save(user);
-        if (!success) {
-            throw exceptionManager.create("资源创建失败!");
-        }
+        userMapper.save(user);
         return MapperUtils.mapperBean(user, UserVO.class);
     }
 
@@ -61,10 +56,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             throw exceptionManager.create("您所更新的资源ID不存在!");
         }
         User user = MapperUtils.mapperBean(userDTO, User.class);
-        boolean success = this.updateById(user);
-        if (!success) {
-            throw exceptionManager.create("资源更新失败!");
-        }
+        userMapper.updateById(user);
         return MapperUtils.mapperBean(user, UserVO.class);
     }
 
@@ -79,10 +71,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      */
     @Override
     public void remove(Long id) {
-        boolean success = this.removeById(id);
-        if (!success) {
-            throw exceptionManager.create("资源删除失败!");
-        }
+        userMapper.removeById(id);
     }
 
     /**
@@ -93,7 +82,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      *
      */
     public UserVO get(Long id) {
-        User user = this.getById(id);
+        User user = userMapper.getById(id);
         if (user == null) {
             throw exceptionManager.create("您所查询的资源不存在!");
         }
@@ -104,46 +93,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     /**
     * 根据分页和条件进行查询.
     * <p>
-    *     条件为空时，查询全部
+    *     分页查询
     * </p>
     * @author KingBoy
     * @since 2018-08-07 18:40:50
     *
     */
     @Override
-    public IPage<UserVO> list(IPage page, UserDTO userDTO) {
-        User user = MapperUtils.mapperBean(userDTO, User.class);
-        IPage result = userMapper.selectPage(page, new QueryWrapper<User>().setEntity(user));
-        PageConverter.convert(result, UserVO.class);
-        return result;
-    }
-
-    @Override
-    public IPage<UserVO> listWithXML(IPage page) {
-        page.setRecords(userMapper.listWithXML(page));
-        PageConverter.convert(page, UserVO.class);
+    public Page list(Page page) {
+        List<User> result = userMapper.list(page);
+        page.setData(result);
+        Long count = userMapper.count();
+        page.setTotal(count);
         return page;
     }
-
-    @Override
-    public IPage<UserVO> listWithAnnotation(IPage page) {
-        page.setRecords(userMapper.listWithAnnotation(page));
-        PageConverter.convert(page, UserVO.class);
-        return page;
-    }
-
-    @Override
-    public IPage<UserVO> listByConditionWithWrapper(IPage page, UserDTO userDTO) {
-        IPage result = this.page(page, new QueryWrapper<User>()
-                .eq("gender", userDTO.getGender())
-                .likeRight("name", userDTO.getName())
-                .lt("age", userDTO.getAge())
-                .orderByDesc("age")
-        );
-
-        PageConverter.convert(result, UserVO.class);
-        return result;
-    }
-
 
 }

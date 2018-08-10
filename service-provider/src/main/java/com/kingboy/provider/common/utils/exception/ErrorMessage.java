@@ -1,4 +1,4 @@
-package com.kingboy.provider.common.exception;
+package com.kingboy.provider.common.utils.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

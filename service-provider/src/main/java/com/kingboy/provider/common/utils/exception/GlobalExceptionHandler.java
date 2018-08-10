@@ -1,6 +1,6 @@
-package com.kingboy.provider.common.exception;
+package com.kingboy.provider.common.utils.exception;
 
-import com.kingboy.common.utils.uuid.UUIDUtils;
+import com.kingboy.common.utils.random.RandomUtil;
 import com.netflix.hystrix.exception.HystrixRuntimeException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -116,7 +116,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(INTERNAL_SERVER_ERROR)
     public String handleException(HystrixRuntimeException e) {
         String message = e.getFallbackException().getCause().getMessage();
-        ApiException exception = new ApiException(UUIDUtils.getUUID(), appName, serverIp, new ErrorMessage("FALLBACK_EXCEPTION", message));
+        ApiException exception = new ApiException(RandomUtil.uuid(), appName, serverIp, new ErrorMessage("FALLBACK_EXCEPTION", message));
         exception.setStackTrace(e.getStackTrace());
         ApiException apiException = exceptionManager.create(exception);
         log.error(logTraceInfo(apiException));
@@ -165,7 +165,7 @@ public class GlobalExceptionHandler {
      * @since 2018/8/7 02:21
      */
     private ApiException createByCodeAndMessage(String code, Exception e) {
-        ApiException apiException = new ApiException(UUIDUtils.getUUID(), appName, serverIp, new ErrorMessage(code, e.getMessage()));
+        ApiException apiException = new ApiException(RandomUtil.uuid(), appName, serverIp, new ErrorMessage(code, e.getMessage()));
         apiException.setStackTrace(e.getStackTrace());
         ApiException simpleApiException = exceptionManager.create(apiException);
         log.error(logTraceInfo(simpleApiException));

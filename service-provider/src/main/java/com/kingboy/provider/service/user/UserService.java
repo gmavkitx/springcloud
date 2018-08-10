@@ -1,11 +1,9 @@
 package com.kingboy.provider.service.user;
 
-import com.kingboy.provider.domain.po.user.User;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.kingboy.common.utils.page.Page;
 
 import com.kingboy.provider.domain.dto.user.UserDTO;
 import com.kingboy.provider.domain.vo.user.UserVO;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -18,7 +16,7 @@ import javax.validation.constraints.NotNull;
  * @since 2018-08-07 02:02
  */
 @Validated
-public interface UserService extends IService<User> {
+public interface UserService {
 
     /**
      * 保存User.
@@ -61,17 +59,12 @@ public interface UserService extends IService<User> {
     /**
      * 根据分页和条件进行查询.
      * <p>
-     *     条件为空时，查询全部
+     *     分页查询
      * </p>
      * @author KingBoy
      * @since 2018-08-07 18:40:50
      *
      */
-    IPage<UserVO> list(IPage page, UserDTO userDTO);
+    Page list(Page page);
 
-    IPage<UserVO> listWithXML(IPage page);
-
-    IPage<UserVO> listWithAnnotation(IPage page);
-
-    IPage<UserVO> listByConditionWithWrapper(IPage page, UserDTO userDTO);
 }

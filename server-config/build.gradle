@@ -29,13 +29,13 @@ ext {
 }
 
 dependencies {
-    //Secure Auth For Config
+    // Secure Auth For Config
     compile('org.springframework.boot:spring-boot-starter-security')
-    //Config Server
+    // Config Server
     compile('org.springframework.cloud:spring-cloud-config-server')
-    //Eureka Client
+    // Eureka Client
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
-    //Test
+    // Test
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.security:spring-security-test')
 }

@@ -1,1 +1,1 @@
-config server for the project of cloud-king
+config server for the project of springcloud

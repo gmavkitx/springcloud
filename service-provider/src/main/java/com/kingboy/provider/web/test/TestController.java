@@ -1,6 +1,6 @@
 package com.kingboy.provider.web.test;
 
-import com.kingboy.provider.common.exception.ExceptionManager;
+import com.kingboy.provider.common.utils.exception.ExceptionManager;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,4 +35,5 @@ public class TestController {
     public void testCustomException() {
         throw exceptionManager.create("PROV_0001");
     }
+
 }

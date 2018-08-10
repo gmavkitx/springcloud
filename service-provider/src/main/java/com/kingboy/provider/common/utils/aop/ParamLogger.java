@@ -1,7 +1,7 @@
-package com.kingboy.provider.common.aop;
+package com.kingboy.provider.common.utils.aop;
 
 import com.alibaba.fastjson.JSONObject;
-import com.kingboy.common.utils.uuid.UUIDUtils;
+import com.kingboy.common.utils.random.RandomUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -51,7 +51,7 @@ public class ParamLogger {
 
     @Around("controller()")
     public Object around(ProceedingJoinPoint point) throws Throwable {
-        String uuid = UUIDUtils.getUUID();
+        String uuid = RandomUtil.uuid();
 
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         log.info("\n\t请求标识: {}\n\t请求IP: {}\n\t请求路径: {}\n\t请求方式: {}\n\t方法描述: {}\n\t请求参数: {}",

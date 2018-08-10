@@ -1,14 +1,7 @@
 package com.kingboy.provider.domain.po.user;
 
 import java.math.BigDecimal;
-import com.baomidou.mybatisplus.annotation.Version;
 import java.time.LocalDateTime;
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.kingboy.provider.domain.enums.GenderEnum;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,14 +17,13 @@ import lombok.AllArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements Serializable {
+public class User {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * ID
      */
-    @TableId(value = "id", type = IdType.ID_WORKER)
     private Long id;
 
     /**
@@ -58,48 +50,5 @@ public class User implements Serializable {
      * 性别
      */
     private GenderEnum gender;
-
-    /**
-     * 账户状态
-     */
-    private Boolean locked;
-
-    /**
-     * 锁版本
-     */
-    @Version
-    private Integer version;
-
-    /**
-     * 逻辑删除
-     */
-    @TableField("delete_flag")
-    @TableLogic
-    private Integer deleteFlag;
-
-    /**
-     * 创建人
-     */
-    @TableField(value = "create_by", fill = FieldFill.INSERT)
-    private String createBy;
-
-    /**
-     * 创建时间
-     */
-    @TableField(value = "create_time", fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
-
-    /**
-     * 操作人
-     */
-    @TableField(value = "update_by", fill = FieldFill.UPDATE)
-    private String updateBy;
-
-    /**
-     * 更新时间
-     */
-    @TableField(value = "update_time", fill = FieldFill.UPDATE)
-    private LocalDateTime updateTime;
-
 
 }

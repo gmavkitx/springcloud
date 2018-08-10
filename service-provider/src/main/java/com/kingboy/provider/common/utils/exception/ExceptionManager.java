@@ -1,7 +1,7 @@
-package com.kingboy.provider.common.exception;
+package com.kingboy.provider.common.utils.exception;
 
 
-import com.kingboy.common.utils.uuid.UUIDUtils;
+import com.kingboy.common.utils.random.RandomUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -50,7 +50,7 @@ public class ExceptionManager {
         ErrorMessage[] errorMessages = Stream.of(codes)
                 .map(code -> new ErrorMessage(code, environment.getProperty(code)))
                 .toArray(ErrorMessage[]::new);
-        return new ApiException(UUIDUtils.getUUID(), appName, serverIp, errorMessages);
+        return new ApiException(RandomUtil.uuid(), appName, serverIp, errorMessages);
     }
 
     /**
@@ -62,7 +62,7 @@ public class ExceptionManager {
      * @since 2018/8/7 02:21
      */
     public ApiException create(String message) {
-        return new ApiException(UUIDUtils.getUUID(), appName, serverIp, new ErrorMessage("COMMON", message));
+        return new ApiException(RandomUtil.uuid(), appName, serverIp, new ErrorMessage("COMMON", message));
     }
 
     /**

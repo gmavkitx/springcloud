@@ -1,8 +1,7 @@
-package com.kingboy.provider.common.exception;
+package com.kingboy.provider.common.utils.exception;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.*;
-import lombok.*;
 
 import java.util.Arrays;
 import java.util.List;

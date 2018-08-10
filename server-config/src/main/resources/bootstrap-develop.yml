@@ -1,4 +1,4 @@
-#Eureka配置
+# Eureka配置
 eureka:
   client:
     serviceUrl:

@@ -1,40 +1,40 @@
-#服务端口
+# 服务端口
 server:
   port: 8001
 
-#数据源配置
+# 数据源配置
 spring:
-  #Flyway版本控制
+  # Flyway版本控制
   flyway:
     locations: classpath:/db
-  #数据源配置
+  # 数据源配置
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/provider?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
     hikari:
-      #连接的默认自动提交行为
+      # 连接的默认自动提交行为
       auto-commit: true
-      #等待池中连接的最大毫秒数,超过这个时长还没可用的连接则发生SQLException,默认值: 30000(30秒)
+      # 等待池中连接的最大毫秒数,超过这个时长还没可用的连接则发生SQLException,默认值: 30000(30秒)
       connection-timeout: 30000
-      #允许连接在池中空闲的最长时间,默认值: 600000(10分钟),允许的最小值为10000毫秒(10秒)
+      # 允许连接在池中空闲的最长时间,默认值: 600000(10分钟),允许的最小值为10000毫秒(10秒)
       idle-timeout: 600000
-      #连接的最大生命周期, 超时而且没被使用则被释放, 默认值：1800000（30分钟）
+      # 连接的最大生命周期, 超时而且没被使用则被释放, 默认值：1800000（30分钟）
       max-lifetime: 1800000
-      #最小空闲连接数,不建议配置，默认值：与maximumPoolSize相同
+      # 最小空闲连接数,不建议配置，默认值：与maximumPoolSize相同
       minimum-idle: ${spring.datasource.hikari.maximum-pool-size}
-      #允许连接池的最大连接数，包括空闲和正在使用的连接。默认值：10, 推荐的公式：((core_count*2)+effective_spindle_count)，disks in a RAID
+      # 允许连接池的最大连接数，包括空闲和正在使用的连接。默认值：10, 推荐的公式：((core_count*2)+effective_spindle_count)，disks in a RAID
       maximum-pool-size: 10
-      #连接只读数据库时配置为true，保证安全
+      # 连接只读数据库时配置为true，保证安全
       read-only: false
 
-#Controller/Service/Repository日志开关
+# Controller/Service/Repository日志开关
 king:
   log:
     enabled: true
 
-#Swagger相关参数配置
+# Swagger相关参数配置
 swagger:
   title: 生产者服务
   description: 提供给Consumer使用
@@ -42,37 +42,7 @@ swagger:
   base-path: /**
   exclude-path: /error, /ops/**
 
-#Mybaits Plus配置，不写下面的配置，全部使用默认配置也可以运行
-mybatis-plus:
-  # 如果是放在src/main/java目录下 classpath:/com/yourpackage/*/mapper/*Mapper.xml
-  # 如果是放在resource目录 classpath:/mapper/*Mapper.xml
-  mapper-locations: classpath:/mapper/*/*Mapper.xml
-  #实体扫描，多个package用逗号或者分号分隔
-  type-aliases-package: com.kingboy.provider.domain.po
-  type-enums-package: com.kingboy.provider.domain.enums
+# 下划线转驼峰
+mybatis:
   configuration:
-    #配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as（没开启这个，SQL需要写as： select user_id as userId）
     map-underscore-to-camel-case: true
-    cache-enabled: false
-    #配置JdbcTypeForNull, oracle数据库必须配置
-    jdbc-type-for-null: 'null'
-    # Sequence序列接口实现类配置
-    #key-generators: com.baomidou.mybatisplus.extension.incrementer.OracleKeyGenerator
-  global-config:
-    #刷新mapper 调试神器
-    refresh: true
-    db-config:
-      #主键类型
-      id-type: id_worker
-      #字段策略
-      field-strategy: not_null
-      #将表名和表字段名中的下划线转换为类的驼峰
-      column-underline: true
-      table-underline: true
-      #全局表前缀
-      #table-prefix: provider_
-      #数据库大写下划线转换
-      capital-mode: false
-      #逻辑删除
-      logic-not-delete-value: 0
-      logic-delete-value: 1
