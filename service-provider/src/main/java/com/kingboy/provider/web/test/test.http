@@ -1,0 +1,21 @@
+### 测试自定义异常
+
+GET http://localhost:8001/exception/custom
+
+### 测试系统异常
+
+GET http://localhost:8001/exception/system
+
+### 触发Config动态刷新属性
+
+POST http://localhost:8001/actuator/refresh
+
+### 获取在ConfigService的属性, 需要先触发刷新端点才可以
+
+GET http://localhost:8001/config/value
+
+### 获取Eureka服务
+
+GET http://localhost:8001/eureka/services
+
+###

@@ -29,6 +29,17 @@ spring:
       # 连接只读数据库时配置为true，保证安全
       read-only: false
 
+# Actuator配置,使用'*'开启所有端点,也可以使用['info','env']方式开放指定端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+#测试属性动态刷新,需要开启'refresh'端点,同时类上使用@RefreshScope进行注解
+config:
+  version: v1
+
 # Controller/Service/Repository日志开关
 king:
   log:

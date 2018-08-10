@@ -34,6 +34,7 @@ ext {
 dependencies {
     // Web
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
     // Mybatis
     compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2')
     compile('org.flywaydb:flyway-core')

@@ -15,8 +15,8 @@ import javax.annotation.Resource;
  * @since 2018-08-07 02:02
  */
 @RestController
-@RequestMapping(value = "/test")
-public class TestController {
+@RequestMapping(value = "/exception")
+public class ExceptionController {
 
     @Resource
     ExceptionManager exceptionManager;
