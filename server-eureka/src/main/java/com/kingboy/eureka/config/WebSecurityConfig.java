@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 /**
  * 关闭csrf的配置.
+ *
  * @author KingBoy - KingBoyWorld@163.com
  * @since 2018-08-07 02:02
  */

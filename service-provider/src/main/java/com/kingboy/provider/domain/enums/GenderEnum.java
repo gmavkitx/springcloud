@@ -2,7 +2,6 @@ package com.kingboy.provider.domain.enums;
 
 /**
  * 性别枚举类.
- * <p></p>
  *
  * @author KingBoy - KingBoyWorld@163.com
  * @since 2018-08-07 02:02

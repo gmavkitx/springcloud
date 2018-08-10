@@ -18,7 +18,6 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
 /**
  * 全局异常捕捉并转换异常.
- * <p></p>
  *
  * @author KingBoy - KingBoyWorld@163.com
  * @since 2018-08-07 02:02
@@ -44,10 +43,8 @@ public class GlobalExceptionHandler {
 
     /**
      * Service校验异常.
-     * <p></p>
+     *
      * @param e
-     * @author KingBoy - KingBoyWorld@163.com
-     * @since 2018/8/7 02:21
      */
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(BAD_REQUEST)
@@ -60,10 +57,8 @@ public class GlobalExceptionHandler {
 
     /**
      * Controller校验异常.
-     * <p></p>
+     *
      * @param e
-     * @author KingBoy - KingBoyWorld@163.com
-     * @since 2018/8/7 02:21
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(BAD_REQUEST)
@@ -77,10 +72,8 @@ public class GlobalExceptionHandler {
 
     /**
      * Controller参数转换异常.
-     * <p></p>
+     *
      * @param e
-     * @author KingBoy - KingBoyWorld@163.com
-     * @since 2018/8/7 02:21
      */
     @ExceptionHandler(HttpMessageConversionException.class)
     @ResponseStatus(BAD_REQUEST)
@@ -106,11 +99,9 @@ public class GlobalExceptionHandler {
 
     /**
      * Hystrix断路器fallback异常.
-     * <p></p>
+     *
      * @param e
      * @return
-     * @author KingBoy - KingBoyWorld@163.com
-     * @since 2018/8/7 02:21
      */
     @ExceptionHandler(HystrixRuntimeException.class)
     @ResponseStatus(INTERNAL_SERVER_ERROR)
@@ -125,11 +116,9 @@ public class GlobalExceptionHandler {
 
     /**
      * 其它异常信息.
-     * <p></p>
+     *
      * @param e
      * @return java.lang.String
-     * @author KingBoy - KingBoyWorld@163.com
-     * @since 2018/8/7 03:13
      */
     @ExceptionHandler(Exception.class)
     @ResponseStatus(INTERNAL_SERVER_ERROR)
@@ -140,12 +129,10 @@ public class GlobalExceptionHandler {
 
     /**
      * 通过code集合获取异常信息.
-     * <p></p>
+     *
      * @param codes
      * @param stackTrace
      * @return
-     * @author KingBoy - KingBoyWorld@163.com
-     * @since 2018/8/7 02:21
      */
     private String getExceptionStringByCode(String[] codes, StackTraceElement[] stackTrace) {
         ApiException exception = exceptionManager.create(codes);
@@ -158,11 +145,9 @@ public class GlobalExceptionHandler {
 
     /**
      * 自定义code,并从causeException中获取信息.
-     * <p></p>
+     *
      * @param e
      * @return
-     * @author KingBoy - KingBoyWorld@163.com
-     * @since 2018/8/7 02:21
      */
     private ApiException createByCodeAndMessage(String code, Exception e) {
         ApiException apiException = new ApiException(RandomUtil.uuid(), appName, serverIp, new ErrorMessage(code, e.getMessage()));
@@ -175,11 +160,9 @@ public class GlobalExceptionHandler {
 
     /**
      * 取出异常栈信息.
-     * <p></p>
+     *
      * @param e
      * @return
-     * @author KingBoy - KingBoyWorld@163.com
-     * @since 2018/8/7 02:21
      */
     private String logTraceInfo(Exception e) {
         StackTraceElement[] trace = e.getStackTrace();

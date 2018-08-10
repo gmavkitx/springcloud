@@ -14,7 +14,6 @@ import java.util.stream.Stream;
 
 /**
  * 异常生产工厂.
- * <p></p>
  *
  * @author KingBoy - KingBoyWorld@163.com
  * @since 2018-08-07 02:02
@@ -40,11 +39,9 @@ public class ExceptionManager {
 
     /**
      * 创建默认的异常.
-     * <p></p>
+     *
      * @param codes
      * @return
-     * @author KingBoy - KingBoyWorld@163.com
-     * @since 2018/8/7 02:21
      */
     public ApiException create(String... codes) {
         ErrorMessage[] errorMessages = Stream.of(codes)
@@ -55,11 +52,9 @@ public class ExceptionManager {
 
     /**
      * 通过错误消息直接创建异常.
-     * <p></p>
+     *
      * @param message
      * @return
-     * @author KingBoy - KingBoyWorld@163.com
-     * @since 2018/8/7 02:21
      */
     public ApiException create(String message) {
         return new ApiException(RandomUtil.uuid(), appName, serverIp, new ErrorMessage("COMMON", message));
@@ -67,11 +62,9 @@ public class ExceptionManager {
 
     /**
      * 简化异常栈信息.
-     * <p></p>
+     *
      * @param apiException
      * @return
-     * @author KingBoy - KingBoyWorld@163.com
-     * @since 2018/8/7 02:21
      */
     protected ApiException create(ApiException apiException) {
         List<StackTraceElement> traceList = Stream.of(apiException.getStackTrace())

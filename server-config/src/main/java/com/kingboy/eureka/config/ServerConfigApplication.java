@@ -15,7 +15,6 @@ import org.springframework.cloud.config.server.EnableConfigServer;
  *     /{application}-{profile}.properties
  *     /{label}/{application}-{profile}.properties
  * </p>
- *
  * @author KingBoy - KingBoyWorld@163.com
  * @since 2018-08-07 02:02
  */

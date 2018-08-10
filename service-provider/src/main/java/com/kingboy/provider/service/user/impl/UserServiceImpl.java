@@ -15,7 +15,6 @@ import java.util.List;
 
 /**
  * User接口实现.
- * <p></p>
  *
  * @author KingBoy - KingBoyWorld@163.com
  * @since 2018-08-07 02:02
@@ -31,10 +30,6 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 保存User.
-     * <p></p>
-     * @author KingBoy
-     * @since 2018-08-07 18:35:44
-     *
      */
     @Override
     public UserVO save(UserDTO userDTO) {
@@ -45,10 +40,6 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 更新User, 更新不为Null的字段.
-     * <p></p>
-     * @author KingBoy
-     * @since 2018-08-07 18:36:34
-     *
      */
     @Override
     public UserVO update(UserDTO userDTO) {
@@ -65,9 +56,6 @@ public class UserServiceImpl implements UserService {
      * <p>
      *     根据项目配置进行硬删除或者软删除
      * </p>
-     * @author KingBoy
-     * @since 2018-08-07 18:37:30
-     *
      */
     @Override
     public void remove(Long id) {
@@ -76,10 +64,6 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 通过ID查询User.
-     * <p></p>
-     * @author KingBoy
-     * @since 2018-08-07 18:40:06
-     *
      */
     public UserVO get(Long id) {
         User user = userMapper.getById(id);
@@ -95,9 +79,6 @@ public class UserServiceImpl implements UserService {
     * <p>
     *     分页查询
     * </p>
-    * @author KingBoy
-    * @since 2018-08-07 18:40:50
-    *
     */
     @Override
     public Page list(Page page) {
