@@ -4,5 +4,3 @@ include(":common")
 include(":server-config")
 include(":server-eureka")
 include(":service-provider")
-include(":tools-generator")
-
