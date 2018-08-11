@@ -1,0 +1,104 @@
+# 服务端口
+server:
+  port: 7005
+
+# Zuul配置
+zuul:
+  # 设置所有url的前缀
+  prefix: /api
+  # 开启ribbon的积极加载,会在程序启动时就加载ribbon, 一定程度上可以防止第一次对下游服务请求失败.可以观察日志中的初始化信息来查看.
+  ribbon:
+    eager-load:
+      enabled: true
+  host:
+    # 设置一个zuul proxy最大可以同时处理多少连接
+    max-total-connections: 500
+    # 设置一个routes最大可以使用多少连接
+    max-per-route-connections: 100
+  # 设置文件上传的前缀地址, 默认/zuul
+  servlet-path: /upload
+  # 设置失败重试
+  retryable: true
+  # 忽略符合规则的路径,并且优先级高于下面所有配置
+  ignored-patterns: /**/admin/**
+  # 配置是否忽略path,默认为true. 访问下游服务时,不会带有path路径.也可以在路由规则中单独进行配置
+  strip-prefix: true
+  # 忽略指定的服务的路由, 多个服务以逗号隔开,也可以使用 '*'忽略所有
+  ignored-services: ['server-config']
+  # 默认情况下,zuul会将请求前缀加到header的X-Forwarded-Prefix中,也就是我们配置的path参数,可以在下游服务中根据此参数判断是否来自zuul请求
+  add-proxy-headers: true
+  # 设置敏感头信息,设置的信息不会被转发到下游服务. 留空时,发送所有header到下游服务,不过并不推荐这么做,会带来不安全因素
+  sensitive-headers: Cookie,Set-Cookie,Authorization
+  # 当依赖中存在security时,security会自动忽略有关security的header,防止被路由到下游服务.我们可以设置false来禁止忽略
+  ignore-security-headers: false
+  routes:
+    # 方式一,使用 serviceId: 路径Pattern
+    service-consumer: /consumer/**
+    # 方式二,也可以使用下面这种方式,与方式一配置等价
+    provider:
+      path: /provider/**
+      serviceId: service-provider
+      strip-preifx: true
+    # 方式三,有时候因为服务改造,老服务的存在,我们需要更改原先的路由规则,这是访问old的路径会转向new的路径.
+    # 注意路由的只是本地接口,参考本项目的web包中的NewController
+    replace:
+      path: /old/**
+      url: forward:/new
+#  # 某些特殊情况下,我们可以禁用Zuul的某个Filter,responseFilter禁用后就不反回数据了
+#  SendResponseFilter:
+#    post:
+#      disable: true
+
+# 设置超时时间
+ribbon:
+  # 使用注册发现中的使用如下两个配置
+  ReadTimeout: 3000
+  SocketTimeout: 1000
+  # 使用自定义url的使用如下两个配置
+  host.connect-timeout-millis: 3000
+  host.socket-timeout-millis:  1000
+
+# 开启routes与filter端点
+# get请求/actuator/routes可以查看当前路由信息,加上?format=details可以查看到详细信息.使用post请求/actuator可以强制刷新当前的路由信息, (zuul一般会自动刷新)
+# get请求/actuator/filters返回zuul的所有的过滤器信息
+# /actuator/metrics接口返回了请求的失败状况
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ['info', 'env', 'health', 'routes', 'filters', 'metrics']
+
+# 默认使用apache的httpclien, 我们也可以更换为ribbon已经标记过时的restclient或者okhttpclient,需要定义相应的bean,ClosableHttpClient or OkHttpClient
+#ribbon.okhttp.enabled=true
+#ribbon.restclient.enabled=true
+
+
+## url负载例一: 对单个url进行路由,需要注意的是,url的方式并不在HystrixCommand运行.并不会被ribbon负载, 我们可以采用serviceId的方式来进行配置,见下面的配置
+#zuul:
+#  routes:
+#    baidu:
+#      path: /baidu/**
+#      url: https://www.baidu.com
+
+## url请求例二: 对多个url进行路由, 同时配置hystrixCommand与ribbon
+#zuul:
+#  routes:
+#    mul-url:
+#      path: /mul/**
+#      serviceId: mul-url-service
+#hystrix:
+#  command:
+#    mul-url-service:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 5000
+#mul-url-service:
+#  ribbon:
+#    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+#    #这里只能使用http协议,https需要特殊配置
+#    listOfServers: http://man.linuxde.net,http://www.qq.com
+#    ConnectTimeout: 1000
+#    ReadTimeout: 3000
+#    MaxTotalHttpConnections: 500
+#    MaxConnectionsPerHost: 100

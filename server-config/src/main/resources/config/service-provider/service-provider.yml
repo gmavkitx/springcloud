@@ -35,7 +35,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: ['info', 'env', 'refresh']
+        include: ['info', 'env', 'health', 'refresh']
 
 #测试属性动态刷新,需要开启'refresh'端点,同时类上使用@RefreshScope进行注解
 config:

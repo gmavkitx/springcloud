@@ -1,5 +1,6 @@
 rootProject.name = 'springcloud'
 
+include(":router-zuul")
 include(":server-config")
 include(":server-eureka")
 include(":service-provider")

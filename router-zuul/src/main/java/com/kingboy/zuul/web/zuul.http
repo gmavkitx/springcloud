@@ -1,0 +1,30 @@
+### 访问old/hello接口,跳转到new/hello接口
+
+GET http://localhost:7005/api/old/hello
+
+### 通过zuul访问provider接口
+
+GET http://localhost:7005/api/provider/user/list
+
+### 测试prefilter, 在prefilter中打断点查看
+
+GET http://localhost:7005/api/provider/user/list?pre=true
+
+### 测试routefilter, 在routefilter中打断点查看
+
+GET http://localhost:7005/api/provider/user/list?route=true
+
+### 测试postfilter, 在postfilter中打断点查看
+
+POST http://localhost:7005/api/provider/user?post=true
+Content-Type: application/json
+
+{
+  "name":"king",
+  "age":18,
+  "gender": "MAN",
+  "balance": 100.00,
+  "birth": "1995-10-10 12:12"
+}
+
+###
