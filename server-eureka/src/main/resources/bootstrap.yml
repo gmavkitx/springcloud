@@ -6,7 +6,8 @@ spring:
     active: default
   application:
     name: server-eureka
-  # 设置安全认证，Finchley版本新加了spring前缀
+  # 设置安全认证，Finchley版本新加了spring前缀,特别需要注意的是, 启用安全后,
+  # Eureka希望客户端提供csrf令牌, 但是客户端并没有,需要定义WebSecurityConfigurerAdapter进行禁用
   security:
     user:
       name: kingboy

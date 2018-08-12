@@ -33,6 +33,8 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-security')
     // Eureka Server
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
+    // Application Info Endpoint
+    compile('org.springframework.boot:spring-boot-starter-actuator')
     // Test
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.security:spring-security-test')

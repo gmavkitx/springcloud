@@ -38,6 +38,7 @@ dependencies {
     runtime('mysql:mysql-connector-java')
     // Web
     compile('org.springframework.boot:spring-boot-starter-web')
+    // Application Info Endpoint
     compile('org.springframework.boot:spring-boot-starter-actuator')
     // Config Client And Retry
     compile('org.springframework.cloud:spring-cloud-starter-config')

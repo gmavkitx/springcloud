@@ -28,6 +28,8 @@ eureka:
       defaultZone: http://${eureka.username}:${eureka.password}@localhost:7000/eureka/
     # 定时刷新本地缓存时间
     registry-fetch-interval-seconds: 5
+    # 在服务跨区的情况下, 设置尽量使用同一区的服务, 配合metadata-map中的zone来使用
+    prefer-same-zone-eureka: true
   instance:
     # 使用IP进行注册
     prefer-ip-address: true
@@ -37,3 +39,9 @@ eureka:
     lease-renewal-interval-in-seconds: 5
     # 发呆时间，即服务续约到期时间（缺省为90s）
     lease-expiration-duration-in-seconds: 10
+    # 定义自身服务的一些标识信息(元数据),其他服务可以获得该元数据,进行一定的操作
+    metadata-map:
+      zone: defaultZone
+      type: router
+      author: kingboy
+      version: v1.0.0

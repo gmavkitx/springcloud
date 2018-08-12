@@ -19,7 +19,7 @@ spring:
       server:
         # FIXME 为了更方便测试项目,这里使用本地文件进行配置
         # FIXME 如果使用git仓库,只需要将resources目录下的文件夹拷贝到相应的git仓库,修改git仓库地址,将spring.profiles.active更改为default即可.
-        # 使用本地文件的配置方式
+        # 使用本地文件的配置方式, 也可以使用file:///${user.home}/config-repo的方式
         native:
           search-locations: classpath:/config/{application}
         # 使用Git仓库的配置方式
@@ -60,3 +60,11 @@ eureka:
     lease-renewal-interval-in-seconds: 5
     # 发呆时间，即服务续约到期时间（缺省为90s）
     lease-expiration-duration-in-seconds: 10
+
+# Endpoint
+# Monitor端点用于github gitlb的webhook进行配合,刷新对应的下游服务配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ['monitor']
