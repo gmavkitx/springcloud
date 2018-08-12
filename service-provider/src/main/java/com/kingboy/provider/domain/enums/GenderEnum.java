@@ -17,7 +17,7 @@ public enum GenderEnum {
 
     private String desc;
 
-    GenderEnum(Integer code, String desc){
+    GenderEnum(Integer code, String desc) {
         this.code = code;
         this.desc = desc;
     }

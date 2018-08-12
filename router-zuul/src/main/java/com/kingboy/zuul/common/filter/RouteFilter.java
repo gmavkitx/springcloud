@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.Proxy;
 import java.util.Enumeration;
-import java.util.List;
-import java.util.Map;
 
 import static com.netflix.zuul.context.RequestContext.getCurrentContext;
 import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.ROUTE_TYPE;
@@ -54,7 +52,6 @@ public class RouteFilter extends ZuulFilter {
 
     @Override
     public Object run() {
-
         OkHttpClient httpClient = new OkHttpClient.Builder().proxy(Proxy.NO_PROXY).build();
 
         RequestContext context = RequestContext.getCurrentContext();
@@ -71,7 +68,6 @@ public class RouteFilter extends ZuulFilter {
                 headers.add(name, value);
             }
         }
-
         headers.removeAll("host");
 
         Request builder = new Request.Builder()
@@ -88,7 +84,6 @@ public class RouteFilter extends ZuulFilter {
         }
 
         LinkedMultiValueMap<String, String> responseHeaders = new LinkedMultiValueMap<>();
-
         if (response != null) {
             response.headers().toMultimap().entrySet()
                     .forEach(entry -> responseHeaders.put(entry.getKey(), entry.getValue()));
@@ -101,9 +96,8 @@ public class RouteFilter extends ZuulFilter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // prevent SimpleHostRoutingFilter from running
+        // 阻止SimpleHostRoutingFilter运行
         context.setRouteHost(null);
-
         return null;
     }
 
