@@ -1,6 +1,6 @@
 package com.kingboy.provider.common.utils.exception;
 
-import com.kingboy.common.utils.json.JsonUtils;
+import com.kingboy.common.utils.json.JsonUtil;
 import feign.Response;
 import feign.Util;
 import feign.codec.ErrorDecoder;
@@ -29,7 +29,7 @@ public class FeignExceptionHandler implements ErrorDecoder {
         if (response.body() != null) {
             String body = Util.toString(response.body().asReader());
             log.error("status: {} reading: {} body: {}", response.status(), methodKey, body);
-            ApiException exception = JsonUtils.jsonToBean(body, ApiException.class);
+            ApiException exception = JsonUtil.jsonToBean(body, ApiException.class);
             return exception;
         }
         return FEIGN_FAIL_EXCEPTION;

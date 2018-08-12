@@ -87,6 +87,7 @@ public class UserServiceImpl implements UserService {
         page.setData(result);
         Long count = userMapper.count();
         page.setTotal(count);
+        page.convert(UserVO.class);
         return page;
     }
 
