@@ -26,19 +26,23 @@ import static org.springframework.util.ReflectionUtils.rethrowRuntimeException;
 @Component
 public class PreFilter extends ZuulFilter {
 
+    @Override
     public String filterType() {
         return "pre";
     }
 
+    @Override
     public int filterOrder() {
         return 6;
     }
 
+    @Override
     public boolean shouldFilter() {
         RequestContext context = getCurrentContext();
         return context.getRequest().getParameter("pre") != null;
     }
 
+    @Override
     public Object run() {
         try {
             RequestContext context = getCurrentContext();

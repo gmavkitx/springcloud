@@ -19,11 +19,17 @@ public interface UserService {
 
     /**
      * 保存User.
+     *
+     * @param userDTO
+     * @return UserVO
      */
     UserVO save(@Valid UserDTO userDTO);
 
     /**
      * 更新User, 更新不为Null的字段.
+     *
+     * @param userDTO
+     * @return UserVO
      */
     UserVO update(@Valid UserDTO userDTO);
 
@@ -32,11 +38,15 @@ public interface UserService {
      * <p>
      *     根据项目配置进行硬删除或者软删除
      * </p>
+     * @param id
      */
     void remove(@NotNull(message = "PROV_0002") Long id);
 
     /**
      * 通过ID查询User.
+     *
+     * @param id
+     * @return UserVO
      */
     UserVO get(@NotNull(message = "PROV_0002") Long id);
 
@@ -45,6 +55,8 @@ public interface UserService {
      * <p>
      *     分页查询
      * </p>
+     * @param page
+     * @return Page
      */
     Page list(Page page);
 

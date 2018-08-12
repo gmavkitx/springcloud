@@ -2,6 +2,7 @@ package com.kingboy.zuul.common.config;
 
 import com.netflix.hystrix.exception.HystrixTimeoutException;
 import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,7 +20,7 @@ import java.io.InputStream;
  * @author kingboy - KingBoyWorld@163.com
  * @since 2018/8/12 03:28
  */
-//@Configuration
+@Configuration
 public class ConsumerFallbackProvider implements FallbackProvider {
 
     /**

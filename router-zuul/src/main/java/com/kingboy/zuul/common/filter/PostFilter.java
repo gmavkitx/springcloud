@@ -25,19 +25,23 @@ import static org.springframework.util.ReflectionUtils.rethrowRuntimeException;
 @Component
 public class PostFilter extends ZuulFilter {
 
+    @Override
     public String filterType() {
         return POST_TYPE;
     }
 
+    @Override
     public int filterOrder() {
         return 999;
     }
 
+    @Override
     public boolean shouldFilter() {
         RequestContext context = getCurrentContext();
         return context.getRequest().getParameter("post") != null;
     }
 
+    @Override
     public Object run() {
         try {
             RequestContext context = getCurrentContext();

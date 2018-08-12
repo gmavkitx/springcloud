@@ -65,6 +65,7 @@ public class UserServiceImpl implements UserService {
     /**
      * 通过ID查询User.
      */
+    @Override
     public UserVO get(Long id) {
         User user = userMapper.getById(id);
         if (user == null) {

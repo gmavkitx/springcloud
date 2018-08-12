@@ -77,7 +77,7 @@ public class ParamLogger {
     }
 
     private String getMethodInfo(JoinPoint point) {
-        ConcurrentHashMap<String, Object> info = new ConcurrentHashMap<>();
+        ConcurrentHashMap<String, Object> info = new ConcurrentHashMap<>(3);
 
         info.put("class", point.getTarget().getClass().getSimpleName());
         info.put("method", point.getSignature().getName());
@@ -86,7 +86,7 @@ public class ParamLogger {
         ConcurrentHashMap<String, String> args = null;
 
         if (Objects.nonNull(parameterNames)) {
-            args = new ConcurrentHashMap<>();
+            args = new ConcurrentHashMap<>(parameterNames.length);
             for (int i = 0; i < parameterNames.length; i++) {
                 String value = point.getArgs()[i] != null ? point.getArgs()[i].toString() : "null";
                 args.put(parameterNames[i], value);

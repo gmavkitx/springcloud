@@ -101,7 +101,8 @@ public class RouteFilter extends ZuulFilter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        context.setRouteHost(null); // prevent SimpleHostRoutingFilter from running
+        // prevent SimpleHostRoutingFilter from running
+        context.setRouteHost(null);
 
         return null;
     }
