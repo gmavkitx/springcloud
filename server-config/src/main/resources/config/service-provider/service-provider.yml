@@ -50,7 +50,7 @@ king:
 swagger:
   title: 生产者服务
   description: 提供给Consumer使用
-  base-package: com.kingboy.provider.web
+  base-package: com.kimzing.provider.web
   base-path: /**
   exclude-path: /error, /ops/**
 

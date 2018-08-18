@@ -1,0 +1,40 @@
+
+### 新增用户
+POST http://localhost:8001/user
+Content-Type: application/json
+
+{
+  "name": "KimZing",
+  "age": 18,
+  "balance": 9999,
+  "birth": "1992-08-05 12:12",
+  "gender": "MAN"
+}
+
+### 更新用户
+
+PUT http://localhost:8001/user
+Content-Type: application/json
+
+{
+  "id": "1",
+  "name": "update",
+  "age": 19,
+  "balance": 99999,
+  "birth": "2000-08-05 12:12",
+  "gender": "MAN"
+}
+
+### 删除用户
+
+DELETE http://localhost:8001/user/1
+
+### 根据ID查询用户
+
+GET http://localhost:8001/user/2
+
+### 分页查询用户
+
+GET http://localhost:8001/user/list?page=2&size=1
+
+###

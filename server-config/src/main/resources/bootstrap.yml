@@ -11,7 +11,7 @@ spring:
   # 设置安全认证，Finchley版本新加了spring前缀
   security:
     user:
-      name: kingboy
+      name: KimZing
       password: 123456
   cloud:
     # Config Server配置
@@ -24,7 +24,7 @@ spring:
           search-locations: classpath:/config/{application}
         # 使用Git仓库的配置方式
 #        git:
-#          uri: https://github.com/KingBoyWorld/springcloud-conf.git
+#          uri: https://github.com/KimZing/springcloud-conf.git
 #          #username: username
 #          #password: password
 #          # 搜索的路径，这里以项目名进行搜索=====记得加上单引号
@@ -44,7 +44,7 @@ spring:
 
 # Eureka配置
 eureka:
-  username: kingboy
+  username: KimZing
   password: 123456
   client:
     serviceUrl:

@@ -10,7 +10,7 @@ spring:
   # Eureka希望客户端提供csrf令牌, 但是客户端并没有,需要定义WebSecurityConfigurerAdapter进行禁用
   security:
     user:
-      name: kingboy
+      name: KimZing
       password: 123456
 
 # Eureka配置
