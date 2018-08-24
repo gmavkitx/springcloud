@@ -21,6 +21,9 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven {
+        url "http://mvn.kimzing.com:8081/nexus/content/groups/public/"
+    }
 }
 
 
@@ -29,20 +32,8 @@ ext {
 }
 
 dependencies {
-    // OkHttp
-    compile('com.squareup.okhttp3:okhttp:3.11.0')
-    compile('com.squareup.okhttp:okhttp-urlconnection:2.7.5')
-    compile('com.squareup.okhttp3:logging-interceptor:3.11.0')
-    // Zuul
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-zuul')
-    // EurekaServer
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
-    // Config Server
-    compile('org.springframework.cloud:spring-cloud-starter-config')
-    compile('org.springframework.retry:spring-retry')
-    compile('org.springframework.boot:spring-boot-starter-aop')
-    // Application Info Endpoint
-    compile('org.springframework.boot:spring-boot-starter-actuator')
+    // Hystrix Dashboard
+    compile("org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard")
     // Logstash
     compile('net.logstash.logback:logstash-logback-encoder:4.6')
     // Test

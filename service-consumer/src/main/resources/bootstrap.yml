@@ -1,0 +1,47 @@
+# Spring配置
+spring:
+  profiles:
+    active: default
+  application:
+    name: service-consumer
+  cloud:
+    # Config Client
+    config:
+      username: KimZing
+      password: 123456
+      discovery:
+        # 从注册中心获取server-config实例
+        enabled: true
+        service-id: server-config
+      # 快速失败与重试机制
+      fail-fast: true
+      retry:
+        initial-interval: 2000
+        max-attempts: 3
+
+# Eureka配置
+eureka:
+  username: KimZing
+  password: 123456
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.username}:${eureka.password}@localhost:7000/eureka/
+    # 定时刷新本地缓存时间
+    registry-fetch-interval-seconds: 5
+    # 在服务跨区的情况下, 设置尽量使用同一区的服务, 配合metadata-map中的zone来使用
+    prefer-same-zone-eureka: true
+  instance:
+    # 使用IP进行注册,默认使用host
+    prefer-ip-address: true
+    # 配置实例的注册ID
+    instance-id: ${spring.cloud.client.hostname}:${server.port}
+    # 心跳时间，即服务续约间隔时间（缺省为30s）
+    lease-renewal-interval-in-seconds: 5
+    # 发呆时间，即服务续约到期时间（缺省为90s）
+    lease-expiration-duration-in-seconds: 10
+    # 定义自身服务的一些标识信息(元数据),其他服务可以获得该元数据,进行一定的操作
+    metadata-map:
+      zone: defaultZone
+      type: service
+      author: KimZing
+      version: v1.0.0

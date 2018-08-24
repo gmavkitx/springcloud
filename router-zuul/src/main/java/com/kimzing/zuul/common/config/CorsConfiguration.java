@@ -1,4 +1,4 @@
-package com.kimzing.provider.common.config;
+package com.kimzing.zuul.common.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

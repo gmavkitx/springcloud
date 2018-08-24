@@ -1,0 +1,24 @@
+# 服务端口
+server:
+  port: 8002
+
+# Actuator配置,使用'*'开启所有端点,也可以使用['info','env']方式开放指定端点
+## refresh 开启配置动态刷新端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ['info', 'env', 'health', 'refresh', 'hystrix.stream']
+
+# Controller/Service/Repository日志开关
+king:
+  log:
+    enabled: true
+
+# Swagger相关参数配置
+swagger:
+  title: 消费者服务
+  description: 消费provider提供的服务
+  base-package: com.kimzing.consumer.web
+  base-path: /**
+  exclude-path: /error, /ops/**

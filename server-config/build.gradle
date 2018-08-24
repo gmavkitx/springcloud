@@ -37,6 +37,8 @@ dependencies {
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
     // Application Info Endpoint
     compile('org.springframework.boot:spring-boot-starter-actuator')
+    // Logstash
+    compile('net.logstash.logback:logstash-logback-encoder:4.6')
     // Test
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.security:spring-security-test')
