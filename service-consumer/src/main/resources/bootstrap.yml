@@ -49,7 +49,7 @@ eureka:
 
 #开启Hystrix的开关，默认Feign中的hystrix是不启用的
 feign:
-  //feignz中是否启用hystrix开关
+  # feign中是否启用hystrix开关
   hystrix:
     enabled: false
   client:
@@ -59,7 +59,18 @@ feign:
         connectTimeout: 1000
         # 返回结果的最大时长 5s
         readTimeout: 5000
+  # 设置请求和响应压缩
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
 
+# Hystrix相关设置
 hystrix:
   command:
     # 配置默认的hystrix超时时间
@@ -67,10 +78,14 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 20000
+            # 如果feign配置了重试机制，那么一般设置为feign单个时间的重试次数的倍数
+            timeoutInMilliseconds: 18000
+          # 设置采用信号量模式
+          strategy: SEMAPHORE
     # 配置指定的hystrixCommand超时时间，相应的方法上必须加上@HystrixCommnad注解，同时可以配置熔断规则，这里设置为10ms，演示熔断的情况
     list:
       execution:
         isolation:
           thread:
             timeoutInMilliseconds: 10
+
