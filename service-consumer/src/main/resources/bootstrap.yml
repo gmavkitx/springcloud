@@ -45,3 +45,32 @@ eureka:
       type: service
       author: KimZing
       version: v1.0.0
+
+
+#开启Hystrix的开关，默认Feign中的hystrix是不启用的
+feign:
+  //feignz中是否启用hystrix开关
+  hystrix:
+    enabled: false
+  client:
+    config:
+      default:
+        # 最大连接时长 1s
+        connectTimeout: 1000
+        # 返回结果的最大时长 5s
+        readTimeout: 5000
+
+hystrix:
+  command:
+    # 配置默认的hystrix超时时间
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+    # 配置指定的hystrixCommand超时时间，相应的方法上必须加上@HystrixCommnad注解，同时可以配置熔断规则，这里设置为10ms，演示熔断的情况
+    list:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10

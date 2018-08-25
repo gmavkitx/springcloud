@@ -15,6 +15,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @EnableSwagger2Doc
 @EnableFeignClients
+//@EnableDiscoveryClient
+//@SpringBootApplication
+//@EnableCircuitBreaker
 @SpringCloudApplication
 public class ServiceConsumerApplication {
 
