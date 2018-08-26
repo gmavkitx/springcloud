@@ -4,6 +4,13 @@ spring:
     active: default
   application:
     name: service-consumer
+  # Zipkin设置
+  zipkin:
+    sender:
+      # 发送到zipkin的类型，rabbit kafka web
+      type: web
+    # 通过web发送的配置
+    base-url: http://localhost:7008/
   cloud:
     # Config Client
     config:
@@ -89,4 +96,3 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 10
-

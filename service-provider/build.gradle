@@ -48,6 +48,8 @@ dependencies {
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
     // Feign Client
     compile('org.springframework.cloud:spring-cloud-starter-openfeign')
+    // Zipkin
+    compile("org.springframework.cloud:spring-cloud-starter-zipkin")
     // Logstash For Logback
     compile('net.logstash.logback:logstash-logback-encoder:4.6')
     // Utils
