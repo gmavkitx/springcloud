@@ -46,7 +46,6 @@ eureka:
       author: KimZing
       version: v1.0.0
 
-
 #开启Hystrix的开关，默认Feign中的hystrix是不启用的
 feign:
   # feign中是否启用hystrix开关
@@ -59,6 +58,8 @@ feign:
         connectTimeout: 1000
         # 返回结果的最大时长 5s
         readTimeout: 5000
+        # 日志级别
+        loggerLevel: FULL
   # 设置请求和响应压缩
   compression:
     request:
