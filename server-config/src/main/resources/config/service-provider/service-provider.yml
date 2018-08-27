@@ -4,6 +4,11 @@ server:
 
 # 数据源配置
 spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
   # Flyway版本控制
   flyway:
     locations: classpath:/db
@@ -35,7 +40,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: ['info', 'env', 'health', 'refresh']
+        include: ['info', 'env', 'health', 'refresh', 'bus-refresh']
 
 #测试属性动态刷新,需要开启'refresh'端点,同时类上使用@RefreshScope进行注解
 config:

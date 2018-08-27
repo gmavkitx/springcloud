@@ -3,10 +3,12 @@ package com.kimzing.consumer.web.user;
 import com.kimzing.consumer.client.provider.UserClient;
 import com.kimzing.consumer.client.provider.dto.user.UserDTO;
 import com.kimzing.consumer.client.provider.vo.user.UserVO;
+import com.kimzing.consumer.stream.channel.ProviderInputAndOutPut;
 import com.kimzing.utils.page.Page;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -21,6 +23,9 @@ import java.util.Collections;
 @RestController
 @RequestMapping("/consumer/user")
 public class UserController {
+
+    @Resource
+    ProviderInputAndOutPut providerInputAndOutPut;
 
     @Resource
     UserClient providerClient;
@@ -73,7 +78,10 @@ public class UserController {
     @ApiOperation(value = "根据ID查询User", tags = "用户信息")
     @GetMapping(value = "/{id}")
     public UserVO get(@PathVariable Long id) {
-        return providerClient.get(id);
+        UserVO userVO = providerClient.get(id);
+        //使用注入的方式进行发送消息,会转换为json,虽然类型不一样，消费者还是可以收到
+        providerInputAndOutPut.consumer().send(MessageBuilder.withPayload(userVO).build());
+        return userVO;
     }
 
     /**

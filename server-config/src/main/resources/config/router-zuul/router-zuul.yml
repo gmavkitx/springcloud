@@ -1,6 +1,12 @@
 # 服务端口
 server:
   port: 7005
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 # Zuul配置
 zuul:
@@ -71,7 +77,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: ['info', 'env', 'health', 'routes', 'filters', 'metrics']
+        include: ['info', 'env', 'health', 'routes', 'filters', 'metrics', 'bus-refresh']
 
 # 默认使用apache的httpclien, 我们也可以更换为ribbon已经标记过时的restclient或者okhttpclient,需要定义相应的bean,ClosableHttpClient or OkHttpClient
 #ribbon.okhttp.enabled=true

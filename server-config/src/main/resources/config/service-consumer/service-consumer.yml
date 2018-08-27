@@ -2,13 +2,20 @@
 server:
   port: 8002
 
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
 # Actuator配置,使用'*'开启所有端点,也可以使用['info','env']方式开放指定端点
 ## refresh 开启配置动态刷新端点
 management:
   endpoints:
     web:
       exposure:
-        include: ['info', 'env', 'health', 'refresh', 'hystrix.stream']
+        include: ['info', 'env', 'health', 'refresh', 'hystrix.stream', 'bus-refresh']
 
 # Controller/Service/Repository日志开关
 king:

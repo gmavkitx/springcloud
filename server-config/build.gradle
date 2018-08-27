@@ -35,6 +35,7 @@ dependencies {
     compile('org.springframework.cloud:spring-cloud-config-server')
     // Eureka Client
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+    compile("org.springframework.cloud:spring-cloud-starter-bus-amqp")
     // Application Info Endpoint
     compile('org.springframework.boot:spring-boot-starter-actuator')
     // Logstash

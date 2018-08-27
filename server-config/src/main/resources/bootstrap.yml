@@ -8,6 +8,11 @@ spring:
     active: native
   application:
     name: server-config
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
   # 设置安全认证，Finchley版本新加了spring前缀
   security:
     user:
