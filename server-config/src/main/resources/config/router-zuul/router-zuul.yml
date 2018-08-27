@@ -49,7 +49,7 @@ zuul:
     consumer:
       path: /consumer/**
       serviceId: service-consumer
-      strip-prefix: false
+      strip-prefix: true
     # 方式三,有时候因为服务改造,老服务的存在,我们需要更改原先的路由规则,这是访问old的路径会转向new的路径.
     # 注意路由的只是本地接口,参考本项目的web包中的NewController
     replace:

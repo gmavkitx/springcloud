@@ -46,6 +46,8 @@ dependencies {
     // Zipkin
     compile("org.springframework.cloud:spring-cloud-starter-zipkin")
     compile("org.springframework.cloud:spring-cloud-starter-bus-amqp")
+    // Swagger整合
+    compile('com.didispace:swagger-butler-core:1.2.0')
     // Logstash
     compile('net.logstash.logback:logstash-logback-encoder:4.6')
     // Test

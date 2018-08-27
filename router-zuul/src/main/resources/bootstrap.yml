@@ -52,3 +52,7 @@ eureka:
       type: router
       author: KimZing
       version: v1.0.0
+
+swagger:
+  butler:
+    auto-generate-from-zuul-routes: true
