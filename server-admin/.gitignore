@@ -1,0 +1,19 @@
+#gralde build
+build
+.gradle
+classes
+
+#idea
+.idea
+*.iml
+out
+
+#java
+*.class
+*.war
+*.ear
+
+#os
+.DS*
+
+#log

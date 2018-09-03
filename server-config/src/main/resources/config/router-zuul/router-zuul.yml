@@ -77,7 +77,8 @@ management:
   endpoints:
     web:
       exposure:
-        include: ['info', 'env', 'health', 'routes', 'filters', 'metrics', 'bus-refresh']
+        # ['info', 'env', 'health', 'routes', 'filters', 'metrics', 'bus-refresh']
+        include: '*'
 
 # 默认使用apache的httpclien, 我们也可以更换为ribbon已经标记过时的restclient或者okhttpclient,需要定义相应的bean,ClosableHttpClient or OkHttpClient
 #ribbon.okhttp.enabled=true

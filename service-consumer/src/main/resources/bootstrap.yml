@@ -51,6 +51,8 @@ eureka:
     lease-renewal-interval-in-seconds: 5
     # 发呆时间，即服务续约到期时间（缺省为90s）
     lease-expiration-duration-in-seconds: 10
+    # 自定义Eureka中实例的访问地址
+    status-page-url: http://${spring.cloud.client.hostname}:${server.port}/swagger-ui.html
     # 定义自身服务的一些标识信息(元数据),其他服务可以获得该元数据,进行一定的操作
     metadata-map:
       zone: defaultZone

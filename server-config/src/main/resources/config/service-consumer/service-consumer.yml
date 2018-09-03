@@ -15,7 +15,8 @@ management:
   endpoints:
     web:
       exposure:
-        include: ['info', 'env', 'health', 'refresh', 'hystrix.stream', 'bus-refresh']
+        # ['info', 'env', 'health', 'refresh', 'hystrix.stream', 'bus-refresh']
+        include: '*'
 
 # Controller/Service/Repository日志开关
 king:
