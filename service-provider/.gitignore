@@ -1,9 +1,7 @@
 #gralde build
 build
-gradle
 .gradle
 classes
-gradlew*
 
 #idea
 .idea
@@ -12,7 +10,6 @@ out
 
 #java
 *.class
-*.jar
 *.war
 *.ear
 
