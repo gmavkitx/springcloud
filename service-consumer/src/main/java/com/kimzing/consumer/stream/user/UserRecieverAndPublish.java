@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 /**
  * 接受用户创建的消息.
  *
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018/8/26 21:15
  */
 @Slf4j

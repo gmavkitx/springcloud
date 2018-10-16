@@ -16,7 +16,7 @@ spring:
   # 设置安全认证，Finchley版本新加了spring前缀
   security:
     user:
-      name: KimZing
+      name: kim
       password: 123456
   cloud:
     # Config Server配置
@@ -30,7 +30,7 @@ spring:
         # 使用Git仓库的配置方式
 #        git:
 #          # 可以使用{application}动态填入项目名
-#          uri: https://github.com/KimZing/springcloud-conf.git
+#          uri: https://github.com/kim/springcloud-conf.git
 #          #username: username
 #          #password: password
 #          # 不校验ssl
@@ -52,7 +52,7 @@ spring:
 
 # Eureka配置
 eureka:
-  username: KimZing
+  username: kim
   password: 123456
   client:
     serviceUrl:
@@ -70,14 +70,14 @@ eureka:
     lease-expiration-duration-in-seconds: 10
     # 定义自身服务的一些标识信息(元数据),其他服务可以获得该元数据,进行一定的操作
     metadata-map:
-      user.name: KimZing
+      user.name: kim
       user.password: 123456
       zone: defaultZone
       type: config
-      author: KimZing
+      author: kim
       version: v1.0.0
 # Endpoint
-# Monitor端点用于github gitlb的webhook进行配合,刷新对应的下游服务配置
+# Monitor端点用于github gitlab的webhook进行配合,刷新对应的下游服务配置
 management:
   endpoints:
     web:

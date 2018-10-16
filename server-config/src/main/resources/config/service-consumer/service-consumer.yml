@@ -19,7 +19,7 @@ management:
         include: '*'
 
 # Controller/Service/Repository日志开关
-king:
+kim:
   log:
     enabled: true
 

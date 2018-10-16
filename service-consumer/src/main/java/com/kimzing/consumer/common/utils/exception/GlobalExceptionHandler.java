@@ -19,7 +19,7 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 /**
  * 全局异常捕捉并转换异常.
  *
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018-08-07 02:02
  */
 @Slf4j
@@ -86,7 +86,7 @@ public class GlobalExceptionHandler {
      * 自定义异常.
      * <p></p>
      * @param e
-     * @author KimZing - kimzing@163.com
+     * @author kim - kimzing@163.com
      * @since 2018/8/7 02:21
      */
     @ExceptionHandler(ApiException.class)

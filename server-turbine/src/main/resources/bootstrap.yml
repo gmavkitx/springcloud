@@ -9,7 +9,7 @@ server:
 
 # Eureka配置
 eureka:
-  username: KimZing
+  username: kim
   password: 123456
   client:
     serviceUrl:
@@ -31,7 +31,7 @@ eureka:
     metadata-map:
       zone: defaultZone
       type: server
-      author: KimZing
+      author: kim
       version: v1.0.0
 
 turbine:

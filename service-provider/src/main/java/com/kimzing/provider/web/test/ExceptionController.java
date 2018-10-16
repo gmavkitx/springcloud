@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 /**
  * 异常测试.
  *
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018-08-07 02:02
  */
 @RestController

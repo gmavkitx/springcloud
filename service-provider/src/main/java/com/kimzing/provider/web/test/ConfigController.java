@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 测试ConfigServer的动态刷新.
  *
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018/8/11 03:27
  */
 @RefreshScope

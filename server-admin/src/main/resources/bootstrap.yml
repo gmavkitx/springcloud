@@ -4,7 +4,7 @@ server:
 spring:
   security:
     user:
-      name: KimZing
+      name: kim
       password: 123456
   profiles:
     active: default
@@ -51,7 +51,7 @@ management:
 
 # Eureka配置
 eureka:
-  username: KimZing
+  username: kim
   password: 123456
   client:
     serviceUrl:
@@ -71,9 +71,9 @@ eureka:
     lease-expiration-duration-in-seconds: 10
     # 定义自身服务的一些标识信息(元数据),其他服务可以获得该元数据,进行一定的操作
     metadata-map:
-      user.name: KimZing
+      user.name: kim
       user.password: 123456
       zone: defaultZone
       type: admin
-      author: KimZing
+      author: kim
       version: v1.0.0

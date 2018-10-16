@@ -22,13 +22,13 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 参数打印.
  *
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018-08-07 02:02
  */
 @Slf4j
 @Aspect
 @Component
-@ConditionalOnProperty(name = "king.log.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "kim.log.enabled", havingValue = "true")
 public class ParamLogger {
 
     @Pointcut("execution(* com.kimzing.consumer.web..*(..))")

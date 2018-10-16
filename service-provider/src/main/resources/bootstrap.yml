@@ -14,7 +14,7 @@ spring:
   cloud:
     # Config Client
     config:
-      username: KimZing
+      username: kim
       password: 123456
       discovery:
         # 从注册中心获取server-config实例
@@ -29,7 +29,7 @@ spring:
 
 # Eureka配置
 eureka:
-  username: KimZing
+  username: kim
   password: 123456
   client:
     serviceUrl:
@@ -53,5 +53,5 @@ eureka:
     metadata-map:
       zone: defaultZone
       type: service
-      author: KimZing
+      author: kim
       version: v1.0.0

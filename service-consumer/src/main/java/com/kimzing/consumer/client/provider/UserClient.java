@@ -12,7 +12,7 @@ import java.util.Collections;
 /**
  * 下游服务提供的API.
  *
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018/8/24 14:28
  */
 @FeignClient(value = "service-provider", fallback = UserClient.UserFallback.class)

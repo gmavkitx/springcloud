@@ -10,7 +10,7 @@ spring:
   # Eureka希望客户端提供csrf令牌, 但是客户端并没有,需要定义WebSecurityConfigurerAdapter进行禁用
   security:
     user:
-      name: KimZing
+      name: kim
       password: 123456
 
 # Eureka配置
@@ -22,19 +22,22 @@ eureka:
     use-read-only-response-cache: false
     # 主动失效检测间隔,配置成5秒
     eviction-interval-timer-in-ms: 5000
+    # 一分钟内接受到的续约次数小于该阈值则开启自我保护
+    renewal-percent-threshold: 0.45
   instance:
     hostname: localhost
     # 没有心跳的淘汰时间，10秒
     lease-expiration-duration-in-seconds: 10
     # 心跳间隔，5秒
     lease-renewal-interval-in-seconds: 5
-    # 使用ip+port的方式进行实例声名，老版本使用的${spring.cloud.client.ipAddress}
-    instance-id: ${spring.cloud.client.hostname}:${server.port}
     # 修改实例的注册名
+    # 使用ip+port的方式进行实例声名
+    # 老版本使用的${spring.cloud.client.ipAddress}获取ip
+    instance-id: ${spring.cloud.client.hostname}:${server.port}
   client:
-    # 不获取注册中心的信息
+    # 获取注册中心的信息
     fetch-registry: false
-    # 不向eureka注册
+    # 向eureka注册
     register-with-eureka: false
     # 客户端注册的url
     service-url:

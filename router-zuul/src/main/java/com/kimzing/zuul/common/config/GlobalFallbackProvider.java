@@ -16,7 +16,7 @@ import java.io.InputStream;
  * <p>
  *     实验证明,要加@Configuration一类的注入注解
  * </p>
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018/8/12 03:33
  */
 @Configuration

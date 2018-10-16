@@ -24,7 +24,7 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
  *     这个示例是将带有route参数的HTTP请求改成请求provider的服务，并将服务端的返回转换成Servlet的响应。
  *     仅当做示例,没有实际意义.
  * </p>
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018/8/12 04:36
  */
 @Component

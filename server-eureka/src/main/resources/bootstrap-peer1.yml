@@ -1,0 +1,18 @@
+# 注意：启用集群时，需要配置hostname: 127.0.0.1	localhost peer1 peer2 peer3
+
+# 服务端口
+server:
+  port: 7001
+
+# Eureka配置
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    # 获取注册中心的信息
+    fetch-registry: true
+    # 向eureka注册
+    register-with-eureka: true
+    # 客户端注册的url
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@peer:7002/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@peer3:7003/eureka/

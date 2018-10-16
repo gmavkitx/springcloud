@@ -16,7 +16,7 @@ import static org.springframework.util.ReflectionUtils.rethrowRuntimeException;
 /**
  * 前置过滤器.
  *
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * <p>
  *     主要用例是设置routefilter所需的信息。
  *     以下过滤器演示修改RequestBody为大写, shouldfilter中设置了只有请求参数包含pre才会被处理

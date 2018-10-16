@@ -4,7 +4,7 @@ POST http://localhost:8001/user
 Content-Type: application/json
 
 {
-  "name": "KimZing",
+  "name": "kim",
   "age": 18,
   "balance": 9999,
   "birth": "1992-08-05 12:12",

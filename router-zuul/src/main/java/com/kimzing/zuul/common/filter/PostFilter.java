@@ -19,7 +19,7 @@ import static org.springframework.util.ReflectionUtils.rethrowRuntimeException;
  * <p>
  *      后置过滤器通常用来操作操纵Response。 以下过滤器演示修改Response, shouldfilter中设置了只有请求参数包含post才会被处理
  * </p>
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018/8/12 04:52
  */
 @Component

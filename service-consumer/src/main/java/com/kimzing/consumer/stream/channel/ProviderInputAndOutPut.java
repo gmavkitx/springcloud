@@ -8,7 +8,7 @@ import org.springframework.messaging.SubscribableChannel;
 /**
  * 自定义通道.
  *
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018/8/26 21:54
  */
 public interface ProviderInputAndOutPut {

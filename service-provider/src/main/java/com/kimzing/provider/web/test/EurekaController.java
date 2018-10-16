@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 获取Eureka的相关服务信息.
  *
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018/8/11 03:30
  */
 @RestController

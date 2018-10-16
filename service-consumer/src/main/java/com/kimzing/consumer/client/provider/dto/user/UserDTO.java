@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 /**
  * UserDTO数据传输对象.
  *
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018-08-07 02:02
  */
 @Data

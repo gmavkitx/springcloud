@@ -33,6 +33,8 @@ zuul:
   ignored-services: ['server-config']
   # 默认情况下,zuul会将请求前缀加到header的X-Forwarded-Prefix中,也就是我们配置的path参数,可以在下游服务中根据此参数判断是否来自zuul请求
   add-proxy-headers: true
+  # 添加host，防止重定向丢失
+  add-host-header: true
   # 设置敏感头信息,设置的信息不会被转发到下游服务. 留空时,发送所有header到下游服务,不过并不推荐这么做,会带来不安全因素
   sensitive-headers: Cookie,Set-Cookie,Authorization
   # 当依赖中存在security时,security会自动忽略有关security的header,防止被路由到下游服务.我们可以设置false来禁止忽略
@@ -62,6 +64,10 @@ zuul:
 
 # 设置超时时间
 ribbon:
+  # 同一个服务虫师的次数（出去首次）
+  MaxAutoRetries: 1
+  # 切换相同服务的数量
+  MaxAutoRetriesNextServer: 1
   # 使用注册发现中的使用如下两个配置
   ReadTimeout: 3000
   SocketTimeout: 1000
@@ -80,7 +86,7 @@ management:
         # ['info', 'env', 'health', 'routes', 'filters', 'metrics', 'bus-refresh']
         include: '*'
 
-# 默认使用apache的httpclien, 我们也可以更换为ribbon已经标记过时的restclient或者okhttpclient,需要定义相应的bean,ClosableHttpClient or OkHttpClient
+# 默认使用apache的httpclient, 我们也可以更换为ribbon已经标记过时的restclient或者okhttpclient,需要定义相应的bean,ClosableHttpClient or OkHttpClient
 #ribbon.okhttp.enabled=true
 #ribbon.restclient.enabled=true
 

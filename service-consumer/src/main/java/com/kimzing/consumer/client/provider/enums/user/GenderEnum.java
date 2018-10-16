@@ -3,7 +3,7 @@ package com.kimzing.consumer.client.provider.enums.user;
 /**
  * 性别枚举类.
  *
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018-08-07 02:02
  */
 public enum GenderEnum {

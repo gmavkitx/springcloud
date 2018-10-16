@@ -15,7 +15,7 @@ import org.springframework.cloud.config.server.EnableConfigServer;
  *     /{application}-{profile}.properties
  *     /{label}/{application}-{profile}.properties
  * </p>
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018-08-07 02:02
  */
 @EnableConfigServer

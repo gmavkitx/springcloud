@@ -17,7 +17,7 @@ import java.util.Collections;
 /**
  * 测试通过feign访问provider服务.
  *
- * @author KimZing - kimzing@163.com
+ * @author kim - kimzing@163.com
  * @since 2018-08-07 02:02
  */
 @RestController
@@ -57,7 +57,6 @@ public class UserController {
      * @return com.kimzing.consumer.client.provider.vo.user.UserVO
      */
     @HystrixCommand(commandProperties = {
-
             //开启熔断，默认true
             @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),
             //设置熔断的阈值，只有当并发超过指定个数时，才会判断熔断
